@@ -5,10 +5,16 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <ul class="topnav">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/help">Help</a></li>
+    <li class="logout"><a href="/logout" data-method="delete">Logout</a></li>
+  </ul>
 </head>
 <body>
-
-<%= yield %>
-
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+  <%= yield %>
 </body>
 </html>
